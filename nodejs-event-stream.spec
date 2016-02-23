@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}nodejs-%{module_name}
 Version:        3.3.2
-Release:        4%{?dist}
+Release:        6%{?dist}
 Summary:        Construct pipes of streams of events
 
 License:        MIT
@@ -18,7 +18,7 @@ Source0:        https://registry.npmjs.org/%{module_name}/-/%{module_name}-%{ver
 BuildArch:      noarch
 ExclusiveArch:  %{nodejs_arches} noarch
 
-BuildRequires:  nodejs010-runtime
+BuildRequires:  %{?scl_prefix}runtime
 
 %if 0%{?enable_tests}
 BuildRequires:  %{?scl_prefix}npm(tape)
@@ -60,10 +60,13 @@ set -e; for t in test/*.js; do node $t; done
 %{nodejs_sitelib}/%{module_name}
 
 %changelog
-* Thu Jan 07 2016 Tomas Hrcka <thrcka@redhat.com> - 3.3.2-3
-- Enable scl macros
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.3.2-6
+- Use macro in -runtime dependency
 
-* Wed Jan 06 2016 Tomas Hrcka <thrcka@redhat.com> - 3.3.2-2
+* Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.3.2-5
+- Rebuilt with updated metapackage
+
+* Thu Jan 07 2016 Tomas Hrcka <thrcka@redhat.com> - 3.3.2-3
 - Enable scl macros
 
 * Thu Dec 17 2015 Troy Dawson <tdawson@redhat.com> - 3.3.2-1
